@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /tools/
+Disallow: /css/
+Disallow: /js/
+
+Sitemap: https://resurfaceoregon.com/sitemap.xml

@@ -1,0 +1,11 @@
+.git
+.github
+node_modules
+tools
+assets
+LINEAMIENTOS.md
+demo-url.txt
+.DS_Store
+Thumbs.db
+__pycache__
+*.pyc
