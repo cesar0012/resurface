@@ -31,7 +31,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Barlow:wght@400;500;600;700&amp;display=swap">
-  <link rel="stylesheet" href="/css/styles.css?v=5">
+  <link rel="stylesheet" href="/css/styles.css?v=6">
 
   <script type="application/ld+json">
   {
@@ -231,6 +231,11 @@
                 <label for="f-message">Project Details</label>
                 <textarea id="f-message" name="message" placeholder="Tell us about the surface, its condition and anything else that helps — e.g. '60s almond tub with a few chips near the drain.'"></textarea>
               </div>
+              <div class="form-field form-field--full">
+                <label for="f-photo">Photo of Your Surface (optional)</label>
+                <input type="file" id="f-photo" name="photo" accept="image/*">
+                <span class="field-hint">Optional · JPG or PNG. It helps us quote faster — you can also email it after submitting.</span>
+              </div>
               <div class="form-hp" aria-hidden="true">
                 <label for="f-botcheck">Leave this field empty</label>
                 <input type="checkbox" id="f-botcheck" name="botcheck" tabindex="-1" autocomplete="off">
@@ -292,6 +297,6 @@
     </div>
   </footer>
 
-  <script src="/js/main.js?v=4" defer></script>
+  <script src="/js/main.js?v=5" defer></script>
 </body>
 </html>

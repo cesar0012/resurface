@@ -1061,6 +1061,23 @@ body.nav-locked { position: fixed; width: 100%; overflow: hidden; }
   width: 100%;
 }
 .form-field textarea { resize: vertical; min-height: 120px; }
+.form-field input[type="file"] { padding: 10px 12px; }
+.form-field input[type="file"]::file-selector-button {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.88rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ink);
+  background: var(--gold);
+  border: 0;
+  border-radius: 3px;
+  padding: 9px 16px;
+  margin-right: 14px;
+  cursor: pointer;
+}
+.form-field input[type="file"]::file-selector-button:hover { background: var(--gold-2); }
+.field-hint { font-size: 0.83rem; color: var(--muted); }
 .form-field input:focus,
 .form-field select:focus,
 .form-field textarea:focus {

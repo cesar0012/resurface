@@ -312,9 +312,19 @@
         message: form.querySelector("#f-message").value.trim()
       };
 
+      // Foto opcional: el plan gratuito de Web3Forms no adjunta archivos,
+      // así que la foto se recibe por email después del envío.
+      var hasPhoto = form.querySelector("#f-photo").files.length > 0;
+      var photoNote = hasPhoto
+        ? '<br>📎 To include your photo, email it to <a href="mailto:resurfaceoregon@gmail.com?subject=' +
+          encodeURIComponent("Photo — quote request from " + fields.name) +
+          '">resurfaceoregon@gmail.com</a> with your name in the subject.'
+        : "";
+      var message = fields.message + (hasPhoto ? "\n\n[The customer will email a photo of the surface.]" : "");
+
       // Sin access_key configurada: fallback inmediato a mailto
       if (!key || key.indexOf("TU_") === 0) {
-        setStatus("err", mailtoHtml(fields) +
+        setStatus("err", mailtoHtml(fields) + photoNote +
           " <br><small>(Site owner: paste your Web3Forms access key in contact.html to send these automatically.)</small>");
         return;
       }
@@ -334,18 +344,18 @@
           email: fields.email,
           city: fields.city,
           service: fields.service,
-          message: fields.message
+          message: message
         })
       }).then(function (res) {
         return res.json().then(function (data) {
           if (!res.ok || !data.success) throw new Error(data.message || "send failed");
         });
       }).then(function () {
-        setStatus("ok", "<strong>Request sent!</strong> Thank you — we'll get back to you within one business day. For anything urgent, call (971) 470-5412.");
+        setStatus("ok", "<strong>Request sent!</strong> Thank you — we'll get back to you within one business day. For anything urgent, call (971) 470-5412." + photoNote);
         form.reset();
       }).catch(function () {
         // Fallback: mailto pre-llenado si el servicio falla
-        setStatus("err", mailtoHtml(fields) + " or call (971) 470-5412.");
+        setStatus("err", mailtoHtml(fields) + " or call (971) 470-5412." + photoNote);
       }).finally(function () {
         submitBtn.disabled = false;
         submitBtn.textContent = "Send My Request";
